@@ -49,7 +49,7 @@ function renderHome() {
 function startNewSession(isActive = false) {
   const now = new Date();
   const session = {
-    date: now.toLocaleString(),
+    date: now.toISOString().replace('T', ' ').replace(/\..+/, ''), // Format as "2025-08-23 11:00:00"
     exercises: []
   };
 
@@ -244,6 +244,39 @@ function startNewSession(isActive = false) {
   });
 }
 
+// Function to export history as CSV
+function exportHistory() {
+  const history = loadHistory();
+  if (history.length === 0) return;
+
+  const csvRows = [];
+  // Headers
+  csvRows.push(['Date', 'Exercise', 'Weight (kg)', 'Reps', 'Duration (min)']);
+
+  // Data rows
+  history.forEach(session => {
+    session.exercises.forEach(exercise => {
+      const row = [
+        session.date.replace(/,.*$/, ''), // Remove time portion if still present
+        exercise.name,
+        exercise.weight || '',
+        exercise.reps || '',
+        exercise.duration || ''
+      ];
+      csvRows.push(row);
+    });
+  });
+
+  const csvContent = csvRows.map(row => row.join(',')).join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'workout_history.csv';
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
 // Function to view history
 function viewHistory() {
   const history = loadHistory();
@@ -259,6 +292,7 @@ function viewHistory() {
         ${history.map((sess, index) => `<li><button data-index="${index}">${sess.date}</button></li>`).join('')}
       </ul>
       <div id="session-details"></div>
+      <button id="export-history" class="secondary-btn">Export History</button>
       <button id="back-home" class="secondary-btn">Back</button>
     </div>
   `;
@@ -286,6 +320,7 @@ function viewHistory() {
   });
 
   document.getElementById('back-home').addEventListener('click', renderHome);
+  document.getElementById('export-history').addEventListener('click', exportHistory);
 }
 
 // Initial render
