@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- Optimized for mobile -->
+    <title>Workout Tracker</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #1a1a2e; color: #fff; }
+        #workout-app { padding: 10px; max-width: 400px; margin: 0 auto; width: 100%; box-sizing: border-box; } /* Ensure full width on mobile */
+        h1 { text-align: center; font-size: 24px; margin-bottom: 10px; }
+        .tabs { display: flex; justify-content: space-around; margin-bottom: 10px; }
+        .tab-button { flex: 1; padding: 10px; background: #16213e; border: none; border-radius: 10px; color: #fff; font-size: 16px; cursor: pointer; }
+        .tab-button.active { background: #0f3460; }
+        #session-content { background: #16213e; padding: 15px; border-radius: 10px; }
+        p { text-align: center; color: #ccc; }
+        select, input { width: 100%; padding: 8px; margin: 5px 0; background: #0f3460; border: none; border-radius: 5px; color: #fff; box-sizing: border-box; font-size: 16px; } /* Reduced padding for mobile */
+        .input-group { margin-bottom: 10px; }
+        .adjust-buttons { display: flex; justify-content: space-between; margin-top: 5px; }
+        .adjust-buttons button { flex: 1; padding: 5px; margin: 0 2px; background: #0f3460; border: none; border-radius: 5px; color: #fff; cursor: pointer; font-size: 14px; } /* Smaller font for buttons */
+        button { padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .primary-btn { background: #0d6efd; color: #fff; width: 100%; margin: 10px 0; }
+        .secondary-btn { background: #3a3a5c; color: #fff; width: 100%; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 5px 0; }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
+            h1 { font-size: 20px; }
+            .tab-button { font-size: 14px; padding: 8px; }
+            select, input, button { font-size: 14px; padding: 6px; }
+            .adjust-buttons button { font-size: 12px; padding: 4px; }
+            #workout-app { padding: 5px; }
+        }
+    </style>
+</head>
+<body>
+    <script src="workout_tracker_app.js"></script>
+</body>
+</html>
