@@ -3,11 +3,18 @@
 // Preset exercises
 const exercises = [
   { name: 'Bench Press', type: 'weight' },
+  { name: 'Overhead Press', type: 'weight' },
+  { name: 'Chest Fly', type: 'weight' },
+  { name: 'Lat Pulldown', type: 'weight' },
+  { name: 'Assisted Pull-ups', type: 'weight' },
+  { name: 'Crunch', type: 'weight' },
+  { name: 'Quad Lifts', type: 'weight' },
+  { name: 'Hamstring Curls', type: 'weight' },
+  { name: 'Arm Curl', type: 'weight' },
   { name: 'Squat', type: 'weight' },
   { name: 'Deadlift', type: 'weight' },
-  { name: 'Overhead Press', type: 'weight' },
-  { name: 'Pull-ups', type: 'weight' },
   { name: 'Treadmill', type: 'cardio' },
+  { name: 'Outdoor Walking', type: 'cardio' },
   { name: 'Cycling', type: 'cardio' },
   { name: 'Rowing', type: 'cardio' }
 ];
