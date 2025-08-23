@@ -72,7 +72,7 @@ function startNewSession(isActive = false) {
           <option value="">Select Exercise</option>
           ${exercises.map((ex, index) => {
             const option = `<option value="${ex.name}" data-type="${ex.type}">${ex.name}</option>`;
-            return index === 4 ? `${option}<option disabled>-------------------</option>` : option;
+            return index === 10 ? `${option}<option disabled>-------------------</option>` : option;
           }).join('')}
         </select>
         <div id="input-fields"></div>
