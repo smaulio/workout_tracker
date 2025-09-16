@@ -5,6 +5,7 @@ const exercises = [
   { name: 'Bench Press', type: 'weight' },
   { name: 'Overhead Press', type: 'weight' },
   { name: 'Chest Fly', type: 'weight' },
+  { name: 'Delt Fly', type: 'weight' },
   { name: 'Lat Pulldown', type: 'weight' },
   { name: 'Assisted Pull-ups', type: 'weight' },
   { name: 'Crunch', type: 'weight' },
@@ -72,7 +73,7 @@ function startNewSession(isActive = false) {
           <option value="">Select Exercise</option>
           ${exercises.map((ex, index) => {
             const option = `<option value="${ex.name}" data-type="${ex.type}">${ex.name}</option>`;
-            return index === 10 ? `${option}<option disabled>-------------------</option>` : option;
+            return index === 11 ? `${option}<option disabled>-------------------</option>` : option;
           }).join('')}
         </select>
         <div id="input-fields"></div>
@@ -111,7 +112,7 @@ function startNewSession(isActive = false) {
     if (type === 'weight') {
       inputFields.innerHTML = `
         <div class="input-group">
-          <label>Weight (kg)</label>
+          <label>Weight (lb/kg)</label>
           <input type="text" id="weight" value="${lastWeight}" min="0">
           <div class="adjust-buttons">
             <button id="weight-dec-5">-5</button>
