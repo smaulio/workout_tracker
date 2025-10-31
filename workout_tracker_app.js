@@ -8,12 +8,12 @@ const exercises = [
   { name: 'Delt Fly', type: 'weight' },
   { name: 'Lat Pulldown', type: 'weight' },
   { name: 'Assisted Pull-ups', type: 'weight' },
+  { name: 'Assisted Dips', type: 'weight' },
   { name: 'Crunch', type: 'weight' },
   { name: 'Quad Lifts', type: 'weight' },
   { name: 'Hamstring Curls', type: 'weight' },
   { name: 'Arm Curl', type: 'weight' },
   { name: 'Squat', type: 'weight' },
-  { name: 'Deadlift', type: 'weight' },
   { name: 'Treadmill', type: 'cardio' },
   { name: 'Outdoor Walking', type: 'cardio' },
   { name: 'Cycling', type: 'cardio' },
@@ -115,10 +115,10 @@ function startNewSession(isActive = false) {
           <label>Weight (lb/kg)</label>
           <input type="text" id="weight" value="${lastWeight}" min="0">
           <div class="adjust-buttons">
+            <button id="weight-dec-10">-10</button>
             <button id="weight-dec-5">-5</button>
-            <button id="weight-dec-2.5">-2.5</button>
-            <button id="weight-inc-2.5">+2.5</button>
             <button id="weight-inc-5">+5</button>
+            <button id="weight-inc-10">+10</button>
           </div>
         </div>
         <div class="input-group">
@@ -139,14 +139,14 @@ function startNewSession(isActive = false) {
         const currentWeight = parseFloat(weightInput.value) || 0;
         if (currentWeight >= 5) weightInput.value = currentWeight - 5;
       });
-      document.getElementById('weight-dec-2.5').addEventListener('click', () => {
+      document.getElementById('weight-dec-10').addEventListener('click', () => {
         const weightInput = document.getElementById('weight');
         const currentWeight = parseFloat(weightInput.value) || 0;
-        if (currentWeight >= 2.5) weightInput.value = currentWeight - 2.5;
+        if (currentWeight >= 10) weightInput.value = currentWeight - 10;
       });
-      document.getElementById('weight-inc-2.5').addEventListener('click', () => {
+      document.getElementById('weight-inc-10').addEventListener('click', () => {
         const weightInput = document.getElementById('weight');
-        weightInput.value = (parseFloat(weightInput.value) || 0) + 2.5;
+        weightInput.value = (parseFloat(weightInput.value) || 0) + 10;
       });
       document.getElementById('weight-inc-5').addEventListener('click', () => {
         const weightInput = document.getElementById('weight');
@@ -301,7 +301,6 @@ function viewHistory() {
       </ul>
       <div id="session-details"></div>
       <button id="export-history" class="secondary-btn">Export History</button>
-      <button id="back-home" class="secondary-btn">Back</button>
     </div>
   `;
 
@@ -327,7 +326,6 @@ function viewHistory() {
     });
   });
 
-  document.getElementById('back-home').addEventListener('click', renderHome);
   document.getElementById('export-history').addEventListener('click', exportHistory);
 }
 
